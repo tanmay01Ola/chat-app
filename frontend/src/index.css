@@ -1,0 +1,15 @@
+.container {
+  padding:  60;
+  background-color: rgb(57, 55, 55);
+  border: 10 solid #4c4b48;
+  border-radius: 30;
+  display: flex;
+  flex-direction: column;
+}
+
+.button {
+  width : 160;
+  height: 60;
+  border-radius: 20;
+  margin : 10
+}

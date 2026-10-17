@@ -1,10 +1,17 @@
-import { WebSocketServer } from "ws";
+import { db } from "./src/prisma/db";
+import  express  from "express";
 
-const wss  = new WebSocketServer({port : 4000});
-let Connections = []
-wss.on("connection" , (socket)=>{
-    Connections.push(socket);
-   socket.on("message" , (message)=>{
-      Connections.forEach(s => s.send(message.toString()))
-   })
+const app = express();
+
+app.use(express.json());
+
+
+app.listen(3003);
+
+app.post("/rooms" , async(req ,res)=>{
+    const addRoom = await  db.orm.public.Rooms.create({});
+    const token = addRoom.token
+    res.json({
+        token : token
+    })
 })

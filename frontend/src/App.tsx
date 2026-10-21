@@ -1,18 +1,16 @@
-import axios from "axios";
+
 import "./index.css";
 import { Route , Routes , BrowserRouter } from "react-router-dom";
-import { Router } from "express";
 import { LandingPage } from "../components/landingPage";
+import { ChatRoom } from "../components/chatRoom";
+import { JoinRoom } from "../components/joinRoom";
 export function App() {
- async function joinRoom (){
-    await axios("http://localhost:3003/rooms" , {
-       method : "POST"
-    })
-  }
   return (
      <BrowserRouter>
      <Routes> 
            <Route path="/" element={<LandingPage></LandingPage>}> </Route>
+           <Route path="/chatRoom/:roomId" element={<ChatRoom></ChatRoom>}></Route>
+           <Route path="/joinroom" element = {<JoinRoom></JoinRoom>}></Route>
      </Routes>
         </BrowserRouter>
   );

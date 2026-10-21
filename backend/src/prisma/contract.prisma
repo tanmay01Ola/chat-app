@@ -3,4 +3,5 @@
 model Rooms{
   id String @id @default(uuid())
   token String @default(uuid())
+  users Int @default(0)
 }

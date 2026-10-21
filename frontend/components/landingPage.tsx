@@ -1,17 +1,16 @@
 import axios from "axios"
-import { useNavigate } from "react-router-dom"
-async function handleJoinRoom(){
-    await axios("htpp://localhost:3003/joinRoom")
-}
+import { useNavigate, useParams } from "react-router-dom"
 
 export function LandingPage(){
+    const {roomId} = useParams()
+    console.log("TOKEN =" , roomId)
+        const navigate = useNavigate();
     async function handleCreateRoom(){
     await axios("http://localhost:3003/rooms" ,{
         method : "POST"
     })
-    navigate('/chatRoom')
+    navigate(`/chatRoom/${roomId}`)
 }
-    const navigate = useNavigate();
     return(
         <div style={{display : "flex",  justifyContent : "center" , gap : 50}}>
               <div className="container" style={{display : "flex" , alignItems : "center"}}>
@@ -20,7 +19,9 @@ export function LandingPage(){
               </div>
               <div className="container" style={{display : "flex" , alignItems : "center"}}>
                   JOIN A ROOM
-                  <button className="button" onClick={handleJoinRoom}>JOIN ROOM</button>
+                  <button className="button" onClick={()=>{
+                    navigate("/joinRoom")
+                  }}>JOIN ROOM</button>
               </div>
         </div>
     )

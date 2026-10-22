@@ -5,6 +5,8 @@ let Connections = []
 wss.on("connection" , (socket)=>{
     Connections.push(socket);
    socket.on("message" , (message)=>{
-      Connections.forEach(s => s.send(message.toString()))
+         const data = message.toString()
+      console.log("DATAAAAAAAAAAAAA=A=A=A=A=A=A=A=," , data)
+      Connections.forEach(s => s.send((message.toString())))
    })
 })
